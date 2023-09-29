@@ -1,0 +1,30 @@
+server {
+        listen 80;
+   
+        root /var/app;
+        index index.html index.htm index.php;
+        autoindex on;
+
+        error_log /var/log/nginx/error.log error;
+        access_log /var/log/nginx/access.log;
+
+    location ~* \.(jpg|jpeg|gif|png|css|js|ico)$ {
+        access_log        off;
+        log_not_found     off;
+    }
+    location / {
+        try_files $uri $uri/ /index.php?$args;
+    }
+    include alias.d/*.conf;
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass php7.4fpm_pool;
+        fastcgi_read_timeout 600;
+        include fastcgi_params;
+  }
+  location ~ /\. {
+      access_log        off;
+      log_not_found     off;
+      deny all;
+  }
+}
