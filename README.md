@@ -25,8 +25,8 @@
 #### b) Se tienen que agregar los archivos de configuración en las siguientes rutas:
 
 ~~~
-Carpeta Local: test-api/nginx/sites-available
-Carpeta en contenedor: /etc/nginx/sites-available
+Carpeta Local: test-api/nginx
+Carpeta en contenedor: /etc/nginx
 ~~~
 ~~~
 Carpeta en local: test-api/php
